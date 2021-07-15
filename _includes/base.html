@@ -1,6 +1,8 @@
 ---
 site: Pet Photos
 ---
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
 </head>
@@ -9,13 +11,28 @@ site: Pet Photos
     <h1>{{ site }}</h1>
 
     {% unless page.url == '/' %}
-    	<a href="/">Home</a>
+    <a href="/">Home</a>
+    {% endunless %}
+    {% unless page.url == '/about/' %}
+    <a href="/about">About Us</a>
+    {% endunless %}
+    {% unless page.url == '/dog/' %}
+    <a href="/dog">Dogs</a>
+    {% endunless %}
+    {% unless page.url == '/cat/' %}
+    <a href="/cat">Cats</a>
+    {% endunless %}
+    {% unless page.url == '/other/' %}
+    <a href="/other">Other</a>
     {% endunless %}
 
     {{ content }}
 
     <ul>
         {% for photo in collections.photos %}
+            {% if photo.data.photo_keyword == 'dog' and page.url == '/dog/' %}
+            <h1>This is a dog</h1>
+            {% endif %}
             <li>
                 <a href="{{ photo.url }}">
                     A {{ photo.data.photo_keyword }} photo
