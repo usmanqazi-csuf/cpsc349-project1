@@ -7,39 +7,47 @@ site: Pet Photos
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
 </head>
 <body>
-
-    <h1>{{ site }}</h1>
-
-    {% unless page.url == '/' %}
-    <a href="/">Home</a>
-    {% endunless %}
-    {% unless page.url == '/about/' %}
-    <a href="/about">About Us</a>
-    {% endunless %}
-    {% unless page.url == '/dog/' %}
-    <a href="/dog">Dogs</a>
-    {% endunless %}
-    {% unless page.url == '/cat/' %}
-    <a href="/cat">Cats</a>
-    {% endunless %}
-    {% unless page.url == '/other/' %}
-    <a href="/other">Other</a>
-    {% endunless %}
-
-    {{ content }}
-
-    <ul>
-        {% for photo in collections.photos %}
-            {% if photo.data.photo_keyword == 'dog' and page.url == '/dog/' %}
-            <h1>This is a dog</h1>
-            {% endif %}
-            <li>
-                <a href="{{ photo.url }}">
-                    A {{ photo.data.photo_keyword }} photo
-                    by {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    
+    <header>
+        <h1>{{ site }}</h1>
+        <nav>
+            <!-- <ul> -->
+                {% unless page.url == '/' %}
+                <a href="/">Home</a>
+                {% endunless %}
+                {% unless page.url == '/about/' %}
+                <a href="/about">About Us</a>
+                {% endunless %}
+                {% unless page.url == '/dog/' %}
+                <a href="/dog">Dogs</a>
+                {% endunless %}
+                {% unless page.url == '/cat/' %}
+                <a href="/cat">Cats</a>
+                {% endunless %}
+                {% unless page.url == '/other/' %}
+                <a href="/other">Other</a>
+                {% endunless %}
+                <!-- </ul> -->
+            </nav>
+        <h4>{{ content }}</h4>
+    </header>
+    
+    {% if page.url != '/about/' %}
+    <section>
+        <ul>
+            {% for photo in collections.photos %}
+                {% if photo.data.photo_keyword == 'dog' and page.url == '/dog/' %}
+                <p>This is a dog</p>
+                {% endif %}
+                <li>
+                    <a href="{{ photo.url }}">
+                        A {{ photo.data.photo_keyword }} photo
+                        by {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
 
 </body>
