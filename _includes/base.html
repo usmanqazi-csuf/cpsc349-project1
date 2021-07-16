@@ -79,7 +79,7 @@ site: Pet Photos
             </section>              
             {% endfor %}
         </ul>
-        {% else %}
+        {% elsif page.url != '/about/' %}
         <ul>
             {% for other in collections.others %}   
             <section>
