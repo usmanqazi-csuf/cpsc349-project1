@@ -33,7 +33,6 @@ site: Pet Photos
     </section>
 
     <section>
-<<<<<<< HEAD
         {% if page.url != '/about/' %}
         <style>
             body {
@@ -45,48 +44,10 @@ site: Pet Photos
         <ul>
             {% for photo in collections.photos %}
             <section>
-=======
-       {% if page.url == '/' %}
-        <ul>
-            {% for photo in collections.photos %}               
->>>>>>> 7f7ada3f9a30364b2a0270044b461b2b7e7edbe9
                 <li>
                     <a href="{{ photo.url }}">
-                        A {{ photo.data.photo_keyword }} photo
-                        by {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-        {% elsif photo_keyword == 'dog' or title == 'Dogs' %}
-        <ul>
-            {% for dog in collections.dogs %}               
-                <li>
-                    <a href="{{ dog.url }}">
-                        A {{ dog.data.photo_keyword }} photo
-                        by {{ dog.data.photographer_first_name}} {{ dog.data.photographer_last_name }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-        {% elsif photo_keyword == 'cat' or title == 'Cats' %}
-        <ul>
-            {% for cat in collections.cats %}               
-                <li>
-                    <a href="{{ cat.url }}">
-                        A {{ cat.data.photo_keyword }} photo
-                        by {{ cat.data.photographer_first_name}} {{ cat.data.photographer_last_name }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <ul>
-            {% for other in collections.others %}               
-                <li>
-                    <a href="{{ other.url }}">
-                        A {{ other.data.photo_keyword }} photo
-                        by {{ other.data.photographer_first_name}} {{ other.data.photographer_last_name }}
+                        {{ photo.data.ai_description }} - 
+                        {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }} 
                     </a>
                 </li>
             </section>
