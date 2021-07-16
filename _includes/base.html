@@ -8,10 +8,10 @@ site: Pet Photos
 </head>
 <body>
     
-    <header>
-        <h1>{{ site }}</h1>
-        <nav>
-            <!-- <ul> -->
+    <section>
+        <header>
+            <h1>{{ site }}</h1>
+            <nav>
                 {% unless page.url == '/' %}
                 <a href="/">Home</a>
                 {% endunless %}
@@ -27,28 +27,32 @@ site: Pet Photos
                 {% unless page.url == '/other/' %}
                 <a href="/other">Other</a>
                 {% endunless %}
-                <!-- </ul> -->
             </nav>
-        <h4>{{ content }}</h4>
-    </header>
+                {{ content }}
+        </header>
+    </section>
 
-    {% if page.url != '/about/' %}
     <section>
+        {% if page.url != '/about/' %}
         <ul>
             {% for photo in collections.photos %}
+            <section>
                 {% if photo.data.photo_keyword == 'dog' and page.url == '/dog/' %}
-                <p>This is a dog</p>
+                <h5>This is a dog</h5>
                 {% endif %}
+            </section>
+            <section>
                 <li>
                     <a href="{{ photo.url }}">
-                        A {{ photo.data.photo_keyword }} photo
-                        by {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }}
+                        {{ photo.data.ai_description }} - 
+                        {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }} 
                     </a>
                 </li>
+                </section>
             {% endfor %}
         </ul>
+        {% endif %}
     </section>
-    {% endif %}
 
     <section>
         <footer>
