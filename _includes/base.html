@@ -15,9 +15,6 @@ site: Pet Photos
                 {% unless page.url == '/' %}
                 <a href="/">Home</a>
                 {% endunless %}
-                {% unless page.url == '/about/' %}
-                <a href="/about">About Us</a>
-                {% endunless %}
                 {% unless page.url == '/dog/' %}
                 <a href="/dog">Dogs Only</a>
                 {% endunless %}
@@ -26,6 +23,9 @@ site: Pet Photos
                 {% endunless %}
                 {% unless page.url == '/other/' %}
                 <a href="/other">No Dogs or Cats</a>
+                {% endunless %}
+                {% unless page.url == '/about/' %}
+                <a href="/about">About Us</a>
                 {% endunless %}
             </nav>
             {{ content }}
@@ -39,18 +39,57 @@ site: Pet Photos
                 background-color: {{ color_keyword }};
             }
         </style>
+        {% endif %}
+        {% if page.url == '/' %}
         <ul>
             {% for photo in collections.photos %}
             <section>
-                {% if page.url != photo.url %}
                 <li>
                     <a href="{{ photo.url }}">
                         {{ photo.data.ai_description }} - 
                         {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }} 
                     </a>
                 </li>
-                {% endif %}
             </section>
+            {% endfor %}
+        </ul>
+        {% elsif photo_keyword == 'dog' or title == 'Dogs' %}
+        <ul>
+            {% for dog in collections.dogs %}
+            <section>
+                <li>
+                    <a href="{{ dog.url }}">
+                        {{ dog.data.ai_description }} - 
+                        {{ dog.data.photographer_first_name}} {{ dog.data.photographer_last_name }} 
+                    </a>
+                </li>
+            </section>              
+            {% endfor %}
+        </ul>
+        {% elsif photo_keyword == 'cat' or title == 'Cats' %}
+        <ul>
+            {% for cat in collections.cats %}
+            <section>
+                <li>
+                    <a href="{{ cat.url }}">
+                        {{ cat.data.ai_description }} - 
+                        {{ cat.data.photographer_first_name}} {{ cat.data.photographer_last_name }} 
+                    </a>
+                </li>
+            </section>              
+            {% endfor %}
+        </ul>
+        {% else %}
+        <ul>
+            {% for other in collections.others %}   
+            <section>
+                <li>
+                    <a href="{{ other.url }}">
+                        {{ other.data.ai_description }} - 
+                        {{ other.data.photographer_first_name}} {{ other.data.photographer_last_name }}
+                    </a>
+                </li>
+            </section>            
             {% endfor %}
         </ul>
         {% endif %}
