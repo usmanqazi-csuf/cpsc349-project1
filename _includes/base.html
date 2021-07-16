@@ -19,36 +19,38 @@ site: Pet Photos
                 <a href="/about">About Us</a>
                 {% endunless %}
                 {% unless page.url == '/dog/' %}
-                <a href="/dog">Dogs</a>
+                <a href="/dog">Dogs Only</a>
                 {% endunless %}
                 {% unless page.url == '/cat/' %}
-                <a href="/cat">Cats</a>
+                <a href="/cat">Cats Only</a>
                 {% endunless %}
                 {% unless page.url == '/other/' %}
-                <a href="/other">Other</a>
+                <a href="/other">No Dogs or Cats</a>
                 {% endunless %}
             </nav>
-                {{ content }}
+            {{ content }}
         </header>
     </section>
 
     <section>
         {% if page.url != '/about/' %}
+        <style>
+            body {
+                background-color: {{ color_keyword }};
+            }
+        </style>
         <ul>
             {% for photo in collections.photos %}
             <section>
-                {% if photo.data.photo_keyword == 'dog' and page.url == '/dog/' %}
-                <h5>This is a dog</h5>
-                {% endif %}
-            </section>
-            <section>
+                {% if page.url != photo.url %}
                 <li>
                     <a href="{{ photo.url }}">
                         {{ photo.data.ai_description }} - 
                         {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }} 
                     </a>
                 </li>
-                </section>
+                {% endif %}
+            </section>
             {% endfor %}
         </ul>
         {% endif %}
@@ -57,13 +59,13 @@ site: Pet Photos
     <section>
         <footer>
             <p>Author: Christopher Weichlein<br>
-            <a href="mperez5891@csu.fullerton.edu">mperez5891@csu.fullerton.edu</a></p>
+            <a href="cweichlein@csu.fullerton.edu">cweichlein@csu.fullerton.edu</a></p>
             <p>Author: Manuel Perez<br>
             <a href="mperez5891@csu.fullerton.edu">mperez5891@csu.fullerton.edu</a></p>
             <p>Author: Mohammad Usman Qazi<br>
             <a href="usmanqazi@csu.fullerton.edu">usmanqazi@csu.fullerton.edu</a></p>
             <p>Author: Nolan O'donnell<br>
-            <a href="mperez5891@csu.fullerton.edu">mperez5891@csu.fullerton.edu</a></p>
+            <a href="nolan794@csu.fullerton.edu">nolan794@csu.fullerton.edu</a></p>
         </footer>
     </section>
     
