@@ -15,59 +15,57 @@ site: Pet Photos
             <h1>{{ site }}</h1>
             <nav>
                 {% unless page.url == '/' %}
-                <a href="/">Home</a>
+                <a href="/cpsc349-project1/">Home</a>
                 {% endunless %}
                 {% unless page.url == '/dog/' %}
-                <a href="/dog">Dogs Only</a>
+                <a href="/cpsc349-project1/dog">Dogs Only</a>
                 {% endunless %}
                 {% unless page.url == '/cat/' %}
-                <a href="/cat">Cats Only</a>
+                <a href="/cpsc349-project1/cat">Cats Only</a>
                 {% endunless %}
                 {% unless page.url == '/other/' %}
-                <a href="/other">No Dogs or Cats</a>
+                <a href="/cpsc349-project1/other">No Dogs or Cats</a>
                 {% endunless %}
                 {% unless page.url == '/about/' %}
-                <a href="/about">About Us</a>
+                <a href="/cpsc349-project1/about">About Us</a>
                 {% endunless %}
             </nav>
             {{ content }}
             {% if page.url contains '/photos/' %}
             <section>
                 <h2>Photo Information:</h2>
+                <ul>
+                    {% if photographer_first_name != '' %}
+                    <li><p>Photographer: {{ photographer_first_name }} {{ photographer_last_name }}</p></li>
+                    {% else %}
+                    <li><p> Photographer: Unknown </p></li>
+                    {% endif %}
+
+                    {% if exif_camera_make != '' %}
+                    <li><p>Camera Make: {{ exif_camera_make }}</p></li>
+                    {% else %}
+                    <li><p> Camera Make: Unknown </p></li>
+                    {% endif %}
+
+                    {% if exif_camera_model != '' %}
+                    <li><p>Camera Model: {{ exif_camera_model }}</p></li>
+                    {% else %}
+                    <li><p>Camera Model: Unknown</p></li>
+                    {% endif %}
+
+                    {% if photo_location_city != '' %}
+                    <li><p>City: {{ photo_location_city }}</p></li>
+                    {% else %}
+                    <li><p>City: Unknown</p></li>
+                    {% endif %}
+
+                    {% if photo_location_city != '' %}
+                    <li><p>Country: {{ photo_location_country }}</p></li>
+                    {% else %}
+                    <li><p>Country: Unknown</p></li>
+                    {% endif %}
+                </ul>
             </section>
-                <section>
-                    <ul>
-                        {% if photographer_first_name != '' %}
-                        <li><p>Photographer: {{ photographer_first_name }} {{ photographer_last_name }}</p></li>
-                        {% else %}
-                        <li><p> Photographer: Unknown </p></li>
-                        {% endif %}
-    
-                        {% if exif_camera_make != '' %}
-                        <li><p>Camera Make: {{ exif_camera_make }}</p></li>
-                        {% else %}
-                        <li><p> Camera Make: Unknown </p></li>
-                        {% endif %}
-    
-                        {% if exif_camera_model != '' %}
-                        <li><p>Camera Model: {{ exif_camera_model }}</p></li>
-                        {% else %}
-                        <li><p>Camera Model: Unknown</p></li>
-                        {% endif %}
-    
-                        {% if photo_location_city != '' %}
-                        <li><p>City: {{ photo_location_city }}</p></li>
-                        {% else %}
-                        <li><p>City: Unknown</p></li>
-                        {% endif %}
-    
-                        {% if photo_location_city != '' %}
-                        <li><p>Country: {{ photo_location_country }}</p></li>
-                        {% else %}
-                        <li><p>Country: Unknown</p></li>
-                        {% endif %}
-                    </ul>
-                </section>
             {% endif %}
         </header>
     </section>
@@ -86,11 +84,12 @@ site: Pet Photos
         {% endif %}
     {% endif %}
     <section>
+        <h2>Pet Photo Links:</h2>
         {% if page.url == '/' %}
         <ul>
             {% for photo in collections.photos %}
                 <li>
-                    <a href="{{ photo.url }}">
+                    <a href="/cpsc349-project1{{ photo.url }}">
                         {{ photo.data.ai_description }} - 
                         {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }} 
                     </a>
@@ -101,7 +100,7 @@ site: Pet Photos
         <ul>
             {% for dog in collections.dogs %}
                 <li>
-                    <a href="{{ dog.url }}">
+                    <a href="/cpsc349-project1{{ dog.url }}">
                         {{ dog.data.ai_description }} - 
                         {{ dog.data.photographer_first_name}} {{ dog.data.photographer_last_name }} 
                     </a>
@@ -112,7 +111,7 @@ site: Pet Photos
         <ul>
             {% for cat in collections.cats %}
                 <li>
-                    <a href="{{ cat.url }}">
+                    <a href="/cpsc349-project1{{ cat.url }}">
                         {{ cat.data.ai_description }} - 
                         {{ cat.data.photographer_first_name}} {{ cat.data.photographer_last_name }} 
                     </a>
@@ -123,7 +122,7 @@ site: Pet Photos
         <ul>
             {% for other in collections.others %}   
                 <li>
-                    <a href="{{ other.url }}">
+                    <a href="/cpsc349-project1{{ other.url }}">
                         {{ other.data.ai_description }} - 
                         {{ other.data.photographer_first_name}} {{ other.data.photographer_last_name }}
                     </a>
