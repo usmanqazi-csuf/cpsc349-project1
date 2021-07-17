@@ -4,8 +4,10 @@ site: Pet Photos
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>{{ site }}</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    
 </head>
 <body>
     
@@ -73,15 +75,17 @@ site: Pet Photos
 
     <section>
         {% if page.url != '/about/' %}
-        <style>
-            body {
-                background-color: {{ color_keyword }};
-                {% if color_keyword == 'black' %}
-                color: white; /* Necessary for special cases where the background color is black, 
-                                 so the text must be white to be legible. */
-                {% endif %}
-            }
-        </style>
+            {% if color_keyword %}
+            <style>
+                body {
+                    background-color: {{ color_keyword }};
+                    {% if color_keyword == 'black' %}
+                    color: white; /* Necessary for special cases where the background color is black, 
+                                    so the text must be white to be legible. */
+                    {% endif %}
+                }
+            </style>
+            {% endif %}
         {% endif %}
         {% if page.url == '/' %}
         <ul>
