@@ -15,19 +15,19 @@ site: Pet Photos
             <h1>{{ site }}</h1>
             <nav>
                 {% unless page.url == '/' %}
-                <a href="/">Home</a>
+                <a href="/cpsc349-project1/">Home</a>
                 {% endunless %}
                 {% unless page.url == '/dog/' %}
-                <a href="/dog">Dogs Only</a>
+                <a href="/cpsc349-project1/dog">Dogs Only</a>
                 {% endunless %}
                 {% unless page.url == '/cat/' %}
-                <a href="/cat">Cats Only</a>
+                <a href="/cpsc349-project1/cat">Cats Only</a>
                 {% endunless %}
                 {% unless page.url == '/other/' %}
-                <a href="/other">No Dogs or Cats</a>
+                <a href="/cpsc349-project1/other">No Dogs or Cats</a>
                 {% endunless %}
                 {% unless page.url == '/about/' %}
-                <a href="/about">About Us</a>
+                <a href="/cpsc349-project1/about">About Us</a>
                 {% endunless %}
             </nav>
             {{ content }}
@@ -82,66 +82,67 @@ site: Pet Photos
             }
         </style>
         {% endif %}
-    {% endif %}
-    <section>
-        <h2>Pet Photo Links:</h2>
-        {% if page.url == '/' %}
-        <ul>
-            {% for photo in collections.photos %}
+        <section>
+            <h2>Pet Photo Links:</h2>
+            {% if page.url == '/' %}
+            <ul>
+                {% for photo in collections.photos %}
                 <li>
-                    <a href="{{ photo.url }}">
+                    <a href="/cpsc349-project1{{ photo.url }}">
                         {{ photo.data.ai_description }} - 
                         {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }} 
                     </a>
                 </li>
-            {% endfor %}
-        </ul>
-        {% elsif photo_keyword == 'dog' or title == 'Dogs' %}
-        <ul>
-            {% for dog in collections.dogs %}
+                {% endfor %}
+            </ul>
+            {% elsif photo_keyword == 'dog' or title == 'Dogs' %}
+            <ul>
+                {% for dog in collections.dogs %}
                 <li>
-                    <a href="{{ dog.url }}">
+                    <a href="/cpsc349-project1{{ dog.url }}">
                         {{ dog.data.ai_description }} - 
                         {{ dog.data.photographer_first_name}} {{ dog.data.photographer_last_name }} 
                     </a>
                 </li>
-            {% endfor %}
-        </ul>
-        {% elsif photo_keyword == 'cat' or title == 'Cats' %}
-        <ul>
-            {% for cat in collections.cats %}
+                {% endfor %}
+            </ul>
+            {% elsif photo_keyword == 'cat' or title == 'Cats' %}
+            <ul>
+                {% for cat in collections.cats %}
                 <li>
-                    <a href="{{ cat.url }}">
+                    <a href="/cpsc349-project1{{ cat.url }}">
                         {{ cat.data.ai_description }} - 
                         {{ cat.data.photographer_first_name}} {{ cat.data.photographer_last_name }} 
                     </a>
                 </li>
-            {% endfor %}
-        </ul>
-        {% elsif page.url != '/about/' %}
-        <ul>
-            {% for other in collections.others %}   
+                {% endfor %}
+            </ul>
+            {% elsif page.url != '/about/' %}
+            <ul>
+                {% for other in collections.others %}   
                 <li>
-                    <a href="{{ other.url }}">
+                    <a href="/cpsc349-project1{{ other.url }}">
                         {{ other.data.ai_description }} - 
                         {{ other.data.photographer_first_name}} {{ other.data.photographer_last_name }}
                     </a>
                 </li>
-            {% endfor %}
-        </ul>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </section>
         {% endif %}
-    </section>
-
-    <section>
-        <footer>
-            <p>Author: Christopher Weichlein<br>
-            <a href="cweichlein@csu.fullerton.edu">cweichlein@csu.fullerton.edu</a></p>
-            <p>Author: Manuel Perez<br>
-            <a href="mperez5891@csu.fullerton.edu">mperez5891@csu.fullerton.edu</a></p>
-            <p>Author: Mohammad Usman Qazi<br>
-            <a href="usmanqazi@csu.fullerton.edu">usmanqazi@csu.fullerton.edu</a></p>
-            <p>Author: Nolan O'donnell<br>
-            <a href="nolan794@csu.fullerton.edu">nolan794@csu.fullerton.edu</a></p>
+        
+        <section>
+            <footer>
+                <h3>Authors:</h3>
+                <p>Christopher Weichlein<br>
+                <a href="cweichlein@csu.fullerton.edu">cweichlein@csu.fullerton.edu</a></p>
+                <p>Manuel Perez<br>
+                <a href="mperez5891@csu.fullerton.edu">mperez5891@csu.fullerton.edu</a></p>
+                <p>Mohammad Usman Qazi<br>
+                <a href="usmanqazi@csu.fullerton.edu">usmanqazi@csu.fullerton.edu</a></p>
+                <p>Nolan O'donnell<br>
+                <a href="nolan794@csu.fullerton.edu">nolan794@csu.fullerton.edu</a></p>
         </footer>
     </section>
     
